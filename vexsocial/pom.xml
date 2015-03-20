@@ -10,7 +10,7 @@
 		<repository>
 			<id>twitter4j.org</id>
 			<name>twitter4j.org Repository</name>
-			<url>http://twitter4j.org/maven2</url>
+			<url>http://twitter4j.org/mavenprojeto na reconhece outro eclipse 2</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
