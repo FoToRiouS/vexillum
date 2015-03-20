@@ -1,5 +1,6 @@
 package br.com.vexillum.control.persistence;
 
+import br.com.vexillum.model.ICommonEntity;
 import br.com.vexillum.util.Return;
 
 
@@ -81,5 +82,13 @@ public interface IGenericPersistence<E> {
 	 */
 	@SuppressWarnings("rawtypes")
 	public Return listAll(Class classEntity);
+
+	/**
+	 * Salva ou atualizada a entidade
+	 * 
+	 * @param entity Entidade a ser persistida
+	 * @return {@link Return}
+	 */
+	public Return saveOrUpdate(ICommonEntity entity);
 	
 }

@@ -215,6 +215,14 @@ public class GenericControl<E extends ICommonEntity> implements IGenericControl<
 		getPersistence().getSession().refresh(entity);
 	}
 	
+	public Return saveOrUpdate(){
+		 return saveOrUpdate(entity);
+	}
+	
+	public Return saveOrUpdate(ICommonEntity entity){
+		return persistence.saveOrUpdate(entity);
+	}
+	
 	public Return deactivate(){
 		return deactivate(getEntity());
 	}
@@ -245,10 +253,14 @@ public class GenericControl<E extends ICommonEntity> implements IGenericControl<
 		if(data.get("sql") != null){
 			return persistence.searchByHQL((String) data.get("sql"));
 		} else {
-			String complement =  (data.get("complement") == null ? null : (String)data.get("complement"));
-			return persistence.searchByHQL(entity, complement);
+			return searchByHQL(entity);
 		}
 		
+	}
+	
+	public Return searchByHQL(ICommonEntity entity){
+		String complement =  (data.get("complement") == null ? null : (String)data.get("complement"));
+		return persistence.searchByHQL(entity, complement);
 	}
 	
 	//TODO Arrumar uma forma de detectar se é a pesquisa por entidade ou pela hql

@@ -221,6 +221,18 @@ public class GenericPersistence<E extends ICommonEntity> implements IGenericPers
 	}
 	
 	@Override
+	public Return saveOrUpdate(ICommonEntity entity) {
+		Return ret = null;
+		try {
+			getSession().saveOrUpdate(getSession().merge(entity));
+			ret = new Return(true);
+		} catch (Exception e) {
+        	ret = new ExceptionManager(e).treatException();
+		}	
+		return ret;
+	}
+	
+	@Override
 	public Return searchByHQL(ICommonEntity entity) {
 		return searchByHQL(entity, null);
 	}
