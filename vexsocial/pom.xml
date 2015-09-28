@@ -10,7 +10,7 @@
 		<repository>
 			<id>twitter4j.org</id>
 			<name>twitter4j.org Repository</name>
-			<url>http://twitter4j.org/mavenprojeto na reconhece outro eclipse 2</url>
+			<url>http://twitter4j.org/maven2</url>
 			<releases>
 				<enabled>true</enabled>
 			</releases>
@@ -29,12 +29,12 @@
 		<dependency>
 			<groupId>org.facebook4j</groupId>
 			<artifactId>facebook4j-core</artifactId>
-			<version>[2.0,)</version>
+			<version>[2.3,)</version>
 		</dependency>
 		<dependency>
 			<groupId>org.twitter4j</groupId>
 			<artifactId>twitter4j-core</artifactId>
-			<version>[3.0,)</version>
+			<version>[4.0,)</version>
 		</dependency>
 	</dependencies>
 </project>

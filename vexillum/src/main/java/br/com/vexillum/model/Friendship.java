@@ -27,12 +27,10 @@ public class Friendship extends CommonEntityActivated {
 	}
 
 	@ManyToOne(fetch=FetchType.LAZY)
-	@Cascade(CascadeType.ALL)
     @JoinColumn(name="id_owner", unique=false, nullable=false, updatable=false)
 	private UserBasic owner;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@Cascade(CascadeType.ALL)
     @JoinColumn(name="id_friend", unique=false, nullable=false, updatable=false)
 	private UserBasic friend;
 	
