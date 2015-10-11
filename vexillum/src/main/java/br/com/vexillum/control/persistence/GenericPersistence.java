@@ -84,6 +84,7 @@ public class GenericPersistence<E extends ICommonEntity> implements IGenericPers
 		if(getTransaction() != null && !getTransaction().wasRolledBack()){
 			try {
 				getTransaction().rollback();
+				getSession().clear();
 			} catch (Exception e) {
 				getSession().clear();
 			}
