@@ -7,6 +7,7 @@ import java.util.List;
 
 import org.hibernate.Criteria;
 import org.hibernate.FlushMode;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -334,6 +335,17 @@ public class GenericPersistence<E extends ICommonEntity> implements IGenericPers
 		Return ret = null;
 		try {
 			ret = new Return(true, getSession().createQuery(hql).list());
+		} catch (Exception e) {
+			ret = new ExceptionManager(e).treatException();
+		}
+		return ret;
+	}
+	
+	@Override
+	public Return searchByHQL(Query query) {
+		Return ret = null;
+		try {
+			ret = new Return(true, query.list());
 		} catch (Exception e) {
 			ret = new ExceptionManager(e).treatException();
 		}

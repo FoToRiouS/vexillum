@@ -1,5 +1,7 @@
 package br.com.vexillum.control.persistence;
 
+import org.hibernate.Query;
+
 import br.com.vexillum.model.ICommonEntity;
 import br.com.vexillum.util.Return;
 
@@ -57,6 +59,14 @@ public interface IGenericPersistence<E> {
 	 * @return {@link Return}
 	 */
 	public Return searchByHQL(String hql);
+	
+	/**
+	 * Pesquisa as entidades baseadas em uma Query do Hibernate.
+	 * 
+	 * @param Query a ser executada.
+	 * @return {@link Return}
+	 */
+	public Return searchByHQL(Query hql);
 	
 	/**
 	 * Pesquisa as entidades baseadas em uma SQL Nativa.

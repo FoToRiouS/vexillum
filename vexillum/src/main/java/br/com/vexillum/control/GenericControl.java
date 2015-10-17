@@ -3,6 +3,8 @@ package br.com.vexillum.control;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.hibernate.Query;
+
 import br.com.vexillum.configuration.Properties;
 import br.com.vexillum.control.manager.ExceptionManager;
 import br.com.vexillum.control.persistence.GenericPersistence;
@@ -250,12 +252,14 @@ public class GenericControl<E extends ICommonEntity> implements IGenericControl<
 	}
 	
 	public Return searchByHQL(){
+		Return ret = new Return(true);
 		if(data.get("sql") != null){
-			return persistence.searchByHQL((String) data.get("sql"));
+			if(data.get("sql") instanceof String) ret = persistence.searchByHQL((String) data.get("sql"));
+			if(data.get("sql") instanceof Query) ret = persistence.searchByHQL((Query)data.get("sql"));
 		} else {
-			return searchByHQL(entity);
+			ret = searchByHQL(entity);
 		}
-		
+		return ret;
 	}
 	
 	public Return searchByHQL(ICommonEntity entity){
